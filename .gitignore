@@ -2,4 +2,12 @@
 db/*.sqlite3
 log/*.log
 tmp/
+.idea/
 .sass-cache/
+*.swp
+*.tmproj
+tmtags
+.DS_Store
+.idea/workspace.xml
+.idea/tasks.xml
+public/assets/
