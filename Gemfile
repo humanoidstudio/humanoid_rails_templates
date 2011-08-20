@@ -35,7 +35,7 @@ gem 'client_side_validations'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'dragonfly'
 
-gem 'ckeditor', :git => 'git://github.com/galetahub/rails-ckeditor.git', :branch => 'rails3'
+gem 'ckeditor', '~> 3.6.0'
 gem 'paperclip'
 
 group :development do

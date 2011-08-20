@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/galetahub/rails-ckeditor.git
-  revision: 522049946f6bcd119f830de695bc9d9792641905
-  branch: rails3
-  specs:
-    ckeditor (3.5.4)
-      mime-types (>= 1.16)
-
-GIT
   remote: git://github.com/sferik/rails_admin.git
   revision: f02f7c767206b986ae8cb6831561cd1e3a3a0c12
   specs:
@@ -61,6 +53,9 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.2.1)
       ffi (~> 1.0.6)
+    ckeditor (3.6.0)
+      mime-types (~> 1.16)
+      orm_adapter (~> 0.0.5)
     client_side_validations (3.1.0)
     cocaine (0.2.0)
     coffee-filter (0.1.1)
@@ -100,7 +95,7 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
+      rack (< 2, >= 1.1.0)
     ffi (1.0.9)
     gherkin (2.4.14)
       json (>= 1.4.6)
@@ -264,7 +259,7 @@ PLATFORMS
 DEPENDENCIES
   cancan
   capybara
-  ckeditor!
+  ckeditor (~> 3.6.0)
   client_side_validations
   coffee-filter
   coffee-script
