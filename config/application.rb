@@ -46,9 +46,13 @@ module HumanoidGpt
     
     config.generators do |g|
       g.template_engine :haml
+      g.form_builder :simple_form
       g.test_framework :rspec, :fixture => true, :views => false
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
+    
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     # Load CKEditor
     config.autoload_paths += %W( #{config.root}/app/models/ckeditor )

@@ -7,14 +7,16 @@ gem 'sqlite3'
 # Asset template engines
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'haml'
+gem 'simple_form'
 gem 'coffee-script'
+gem 'coffee-filter'
 gem 'uglifier'
 
 gem 'jquery-rails'
 
 # Authorization and permission system
 gem 'devise'
-gem 'omniauth'
+gem 'omniauth', '~> 0.2.6'
 gem 'cancan'
 
 # Admin system
@@ -47,13 +49,12 @@ end
 
 group :test do
   gem 'rspec'
-  gem 'rspec-rails', '>= 2.0.0.beta.1'
+  gem 'rspec-rails'
   gem 'machinist'
   gem 'mocha'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
-  gem 'capybara',         :git => 'git://github.com/jnicklas/capybara.git'
-  gem 'database_cleaner', :git => 'git://github.com/bmabey/database_cleaner.git'
-  gem 'cucumber-rails',   :git => 'git://github.com/cucumber/cucumber-rails.git'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'cucumber-rails'
 
   # Init data
   gem 'faker'
