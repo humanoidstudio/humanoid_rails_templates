@@ -5,6 +5,7 @@ gem 'rails', '3.1.0.rc6'
 gem 'sqlite3'
 
 # Asset template engines
+gem 'compass'
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'haml'
 gem 'simple_form'
