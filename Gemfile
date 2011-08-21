@@ -9,7 +9,6 @@ gem 'compass', git: 'https://github.com/chriseppstein/compass.git', branch: 'rai
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'haml'
 gem 'simple_form'
-gem 'barista'
 gem 'coffee-script'
 gem 'coffee-filter'
 gem 'uglifier'
