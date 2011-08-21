@@ -5,10 +5,11 @@ gem 'rails', '3.1.0.rc6'
 gem 'sqlite3'
 
 # Asset template engines
-gem 'compass'
+gem 'compass', git: 'https://github.com/chriseppstein/compass.git', branch: 'rails31'
 gem 'sass-rails', "~> 3.1.0.rc"
 gem 'haml'
 gem 'simple_form'
+gem 'barista'
 gem 'coffee-script'
 gem 'coffee-filter'
 gem 'uglifier'
@@ -38,6 +39,8 @@ gem 'dragonfly'
 
 gem 'ckeditor', '~> 3.6.0'
 gem 'paperclip'
+
+gem 'therubyracer'
 
 group :development do
   gem 'nifty-generators'
