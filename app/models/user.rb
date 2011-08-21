@@ -39,7 +39,10 @@ class User < ActiveRecord::Base
       
       field :referrer do
         pretty_value do
-          bindings[:view].link_to(value.email, "/admin/#{value.class.name.pluralize.underscore}/#{value.id}")
+          if value
+            bindings[:view].link_to(value.to_s, 
+                                    "/admin/#{value.class.name.pluralize.underscore}/#{value.id}")
+          end
         end
       end
       
@@ -59,24 +62,10 @@ class User < ActiveRecord::Base
     show do
       fields :id, :email, :role
 
-      field :referrer do
-        pretty_value do
-          bindings[:view].link_to(value.email, "/admin/#{value.class.name.pluralize.underscore}/#{value.id}")
-        end
-      end
-      
-      field :referrals do
-        pretty_value do
-          bindings[:view].render :partial => 'show_association',
-                                 :locals  => { :field => self, 
-                                               :form => bindings[:form], 
-                                               :fieldset => bindings[:fieldset] }
-        end
-      end
-      
       include_all_fields
     end
   end
+  
   
   private
     def add_role(role_name)
