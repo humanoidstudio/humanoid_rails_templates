@@ -1,0 +1,11 @@
+- display_name = field.association[:pretty_name]
+- model_name   = field.association[:name]
+- if(field.bindings[:object].send(model_name).respond_to?(:length)) 
+  - actual_model = field.bindings[:object].send(model_name)[0].class.to_s
+- else 
+  - actual_model = field.bindings[:object].send(model_name).class.to_s
+- controller = actual_model.pluralize.underscore
+- associations = [field.bindings[:object].send(model_name)].flatten.compact
+ 
+- associations.each do |association|
+  %li= link_to "#{association.to_s}", show_path(:model_name => controller, :id => association.id)

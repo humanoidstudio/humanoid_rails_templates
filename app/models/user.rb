@@ -8,10 +8,12 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   belongs_to :role
+  belongs_to :referrer, :class_name => "User", :foreign_key => :referrer_id
+  has_many :referrals, :class_name => "User", :foreign_key => :referrer_id
   
   before_create do
     add_role(:member)
-    #add_referral_code
+    add_referral_code
   end
 
   # Check user's role
@@ -19,6 +21,62 @@ class User < ActiveRecord::Base
     self.role == Role.find_by_name(role.to_s.titleize) ? true : false
   end
   
+  def to_s
+    "[##{self.id}] #{self.email}"
+  end
+  
+  # Model-specific configurations
+  rails_admin do
+    list do
+      fields :id, :email do
+        sortable true
+      end
+
+      field :role do
+        filterable :title
+        sortable :title
+      end
+      
+      field :referrer do
+        pretty_value do
+          bindings[:view].link_to(value.email, "/admin/#{value.class.name.pluralize.underscore}/#{value.id}")
+        end
+      end
+      
+      field :created_at do
+        label "Signup At"
+      end
+      
+      exclude_fields :reset_password_sent_at, :remember_created_at, :sign_in_count,
+                     :current_sign_in_at, :last_sign_in_at,
+                     :current_sign_in_ip, :last_sign_in_ip
+    end
+    
+    edit do
+      exclude_fields :reset_password_sent_at
+    end
+    
+    show do
+      fields :id, :email, :role
+
+      field :referrer do
+        pretty_value do
+          bindings[:view].link_to(value.email, "/admin/#{value.class.name.pluralize.underscore}/#{value.id}")
+        end
+      end
+      
+      field :referrals do
+        pretty_value do
+          bindings[:view].render :partial => 'show_association',
+                                 :locals  => { :field => self, 
+                                               :form => bindings[:form], 
+                                               :fieldset => bindings[:fieldset] }
+        end
+      end
+      
+      include_all_fields
+    end
+  end
   
   private
     def add_role(role_name)
