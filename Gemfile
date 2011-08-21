@@ -39,7 +39,11 @@ gem 'dragonfly'
 gem 'ckeditor', '~> 3.6.0'
 gem 'paperclip'
 
+# Embed JavaScript V8 to ruby
 gem 'therubyracer'
+
+# Simplify settings
+gem 'settingslogic'
 
 group :development do
   gem 'nifty-generators'
